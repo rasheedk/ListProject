@@ -1,28 +1,38 @@
-import React, { useCallback } from 'react';
-import { View, FlatList, Text, Image, ActivityIndicator, StyleSheet } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { View, FlatList, Text, Image, ActivityIndicator, StyleSheet, TouchableOpacity } from 'react-native';
+import FadeImage from '../components/FadeImage';
 
 const GistsView = ({ gists, loading, loadMoreData }) => {
-  // Memoized component to avoid unnecessary re-renders
+  const [selectedImageUri, setSelectedImageUri] = useState(null); 
+
   const renderItem = useCallback(({ item }) => (
-    <View style={styles.listItem}>
-      {/* User profile image */}
+    <TouchableOpacity
+      style={styles.listItem}
+      onPress={() => {
+        setSelectedImageUri(item?.avatar_url); 
+      }}
+    >
+
       <Image source={{ uri: item.avatar_url }} style={styles.avatar} />
-      {/* File name */}
       <Text style={styles.fileName} numberOfLines={1} ellipsizeMode="tail">
         {item.file_name}
       </Text>
-    </View>
+    </TouchableOpacity>
   ), []);
 
   const renderFooter = () => {
     return loading ? <View style={styles.footer}><ActivityIndicator /></View> : null;
   };
 
+  const handleFadeOut = () => {
+    setSelectedImageUri(null);
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         data={gists}
-        keyExtractor={(item, index) => `${item.id}-${index}`} // Ensure unique keys
+        keyExtractor={(item, index) => `${item.id}-${index}`} 
         renderItem={renderItem}
         ListFooterComponent={renderFooter}
         onEndReached={loadMoreData}
@@ -33,6 +43,9 @@ const GistsView = ({ gists, loading, loadMoreData }) => {
         windowSize={21}
         updateCellsBatchingPeriod={50}
       />
+      {selectedImageUri && (
+        <FadeImage uri={selectedImageUri} onFadeOut={handleFadeOut} />
+      )}
     </View>
   );
 };
@@ -40,7 +53,6 @@ const GistsView = ({ gists, loading, loadMoreData }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: 10,
   },
   listItem: {
     flexDirection: 'row',
@@ -57,13 +69,13 @@ const styles = StyleSheet.create({
   fileName: {
     marginLeft: 16,
     marginRight: 16, // Add right padding for 16px
-    fontFamily: 'Helvetica Neue', // Set font family
-    fontSize: 15, // Set font size
-    lineHeight: 17.89, // Set line height
-    letterSpacing: -0.016, // Set letter spacing
-    textAlign: 'left', // Set text alignment
-    color: '#000000', // Retaining color for consistency
-    flex: 1, // Allow the text to take available space
+    fontFamily: 'Helvetica Neue',
+    fontSize: 15,
+    lineHeight: 17.89,
+    letterSpacing: -0.016,
+    textAlign: 'left',
+    color: '#000000',
+    flex: 1,
   },
   footer: {
     margin: 10,
