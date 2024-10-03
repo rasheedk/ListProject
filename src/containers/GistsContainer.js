@@ -2,6 +2,9 @@ import React, { useEffect, useState, useCallback } from 'react';
 import fetchClient from '../api/FetchClient';
 import GistsView from '../views/GistsView';
 
+/**
+ * @returns Container wrapping the logic to fetch data via api and handle the pagination
+ */
 const GistsContainer = () => {
   const [gists, setGists] = useState([]);
   const [page, setPage] = useState(1);
@@ -12,6 +15,11 @@ const GistsContainer = () => {
     fetchGists();
   }, []);
 
+  /**
+   * 
+   * @param {*} nextPage - page number
+   * @returns - sets the render ready data
+   */
   const fetchGists = async (nextPage = 1) => {
     if (loading || !hasMore) return;
     setLoading(true);
@@ -43,6 +51,9 @@ const GistsContainer = () => {
     }
   };
 
+  /**
+   * Used to load next set of paginated data
+   */
   const loadMoreData = () => {
     if (hasMore && !loading) {
       fetchGists(page + 1);

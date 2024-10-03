@@ -2,6 +2,12 @@ import React, { useCallback, useState } from 'react';
 import { View, FlatList, Text, Image, ActivityIndicator, StyleSheet, TouchableOpacity } from 'react-native';
 import FadeImage from '../components/FadeImage';
 
+/**
+ * View layer holding the Gist List and contains props 
+ * gists - Data to load in flatlist
+ * loading - An api call in progress
+ * loadMoreData - loading next set of data
+ */
 const GistsView = ({ gists, loading, loadMoreData }) => {
   const [selectedImageUri, setSelectedImageUri] = useState(null); 
 
