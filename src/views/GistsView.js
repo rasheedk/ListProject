@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   listItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 71, // Set the height of each cell to 71px
+    height: 71,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   fileName: {
     marginLeft: 16,
-    marginRight: 16, // Add right padding for 16px
+    marginRight: 16,
     fontFamily: 'Helvetica Neue',
     fontSize: 15,
     lineHeight: 17.89,

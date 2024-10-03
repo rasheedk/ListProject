@@ -1,4 +1,3 @@
-// src/containers/GistsContainer.js
 import React, { useEffect, useState, useCallback } from 'react';
 import fetchClient from '../api/FetchClient';
 import GistsView from '../views/GistsView';
@@ -13,7 +12,6 @@ const GistsContainer = () => {
     fetchGists();
   }, []);
 
-  // Fetch gists data with pagination
   const fetchGists = async (nextPage = 1) => {
     if (loading || !hasMore) return;
     setLoading(true);
@@ -26,7 +24,7 @@ const GistsContainer = () => {
         const firstFileName = Object.keys(files).length > 0 ? Object.keys(files)[0] : 'Unknown file';
 
         return {
-          id: gist?.id || Math.random().toString(), // Unique ID fallback
+          id: gist?.id || Math.random().toString(), 
           avatar_url: owner?.avatar_url || 'https://via.placeholder.com/40',
           file_name: firstFileName,
         };
@@ -36,7 +34,7 @@ const GistsContainer = () => {
         setGists((prevGists) => [...prevGists, ...processedGists]);
         setPage(nextPage);
       } else {
-        setHasMore(false); // No more data to load
+        setHasMore(false); 
       }
     } catch (error) {
       console.error(error);
