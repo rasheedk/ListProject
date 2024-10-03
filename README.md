@@ -1,5 +1,7 @@
-![App Demo](https://drive.google.com/file/d/1FsF32EoX0ZBOag6QQajRO6Ul4axmc_mQ/view?usp=sharing)
+[![SBbAh.gif](https://s1.gifyu.com/images/SBbAh.gif)](https://gifyu.com/image/SBbAh)
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+[**Download APK for this project**](https://github.com/rasheedk/ListProject/commit/44773653900d0834912091758380816b4dbae251#diff-dc7ba984c073e5ab48d808cb80e39412dcf807a95fd6a65ce1c475ed5710abdf)
 
 # Getting Started
 
@@ -13,10 +15,10 @@ To start Metro, run the following command from the _root_ of your React Native p
 
 ```bash
 # using npm
-npm start
+npm  start
 
 # OR using Yarn
-yarn start
+yarn  start
 ```
 
 ## Step 2: Start your Application
@@ -27,23 +29,22 @@ Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _roo
 
 ```bash
 # using npm
-npm run android
+npm  run  android
 
 # OR using Yarn
-yarn android
+yarn  android
 ```
 
 ### For iOS
 
 ```bash
 # using npm
-npm run ios
+npm  run  ios
 
 # OR using Yarn
-yarn ios
+yarn  ios
 ```
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
