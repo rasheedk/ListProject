@@ -29,7 +29,7 @@ class FetchClient {
   async request(endpoint, method = 'GET', options = {}) {
     const headers = { ...this.defaultHeaders, ...options.headers };
     const config = {
-      method, // Specify the HTTP method
+      method,
       ...options,
       headers,
     };
@@ -44,6 +44,17 @@ class FetchClient {
       console.error('Fetch error: ', error);
       throw error;
     }
+  }
+
+  /**
+   * Fetches the list of public gists from GitHub API
+   * @param {number} page - The page number for pagination
+   * @param {number} perPage - The number of gists per page
+   * @returns - A promise with the list of gists or an error
+   */
+  async getGists(page = 1, perPage = 10) {
+    const endpoint = `gists/public?page=${page}&per_page=${perPage}`;
+    return this.request(endpoint);
   }
 }
 

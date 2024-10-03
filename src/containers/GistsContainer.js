@@ -25,7 +25,7 @@ const GistsContainer = () => {
     setLoading(true);
 
     try {
-      const data = await fetchClient.request(`gists/public?page=${nextPage}&per_page=30`);
+      const data = await fetchClient.getGists(nextPage,30);
       const processedGists = data?.map((gist) => {
         const owner = gist?.owner ?? {};
         const files = gist?.files ?? {};
