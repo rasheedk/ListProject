@@ -26,7 +26,7 @@ const GistsContainer = () => {
 
     try {
       const data = await fetchClient.request(`gists/public?page=${nextPage}&per_page=30`);
-      const processedGists = data.map((gist) => {
+      const processedGists = data?.map((gist) => {
         const owner = gist?.owner ?? {};
         const files = gist?.files ?? {};
         const firstFileName = Object.keys(files).length > 0 ? Object.keys(files)[0] : 'Unknown file';
